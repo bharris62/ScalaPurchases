@@ -21,10 +21,15 @@ object FileIO {
     println("Which category would you like to see?")
     val userInput = io.StdIn.readLine().toLowerCase()
     val filtered = purch.filter(x => x.category.toLowerCase == userInput)
-    val pw = new PrintWriter(new File("filtered_purchases.prn"))
-    filtered.foreach(x =>
+    val pw = new PrintWriter(new File(userInput + "_filtered_purchases.prn"))
+    pw.write(s"Filtered By: $userInput \n")
+    filtered.foreach(x => {
       pw.write(s"Customer: ${x.customer_id}, Date: ${x.date}\n")
-    )
+    })
     pw.close
+  }
+
+  def addPurchase(): Unit ={
+
   }
 }
